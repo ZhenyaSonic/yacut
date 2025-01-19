@@ -15,7 +15,7 @@ class InvalidAPIUsage(Exception):
             self.status_code = status_code
 
     def to_dict(self):
-        return dict(message=self.message)
+        return {"message": self.message}
 
 
 @app.errorhandler(InvalidAPIUsage)
@@ -31,7 +31,3 @@ def page_not_found(error):
 @app.errorhandler(HTTPStatus.INTERNAL_SERVER_ERROR)
 def internal_error(error):
     return render_template('500.html'), HTTPStatus.INTERNAL_SERVER_ERROR
-
-
-class ValidationError(Exception):
-    pass

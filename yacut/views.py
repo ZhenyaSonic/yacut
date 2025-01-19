@@ -5,12 +5,12 @@ import string
 from flask import flash, redirect, render_template, url_for
 
 from . import app, db
-from .constants import MAX_LENGTH_SHORT
+from .constants import MAX_LENGTH_SHORT, MAX_RANDOM_LINK_LENGTH
 from .forms import UrlForm
 from .models import URLMap
 
 
-def generate_random_link(length=6):
+def generate_random_link(length=MAX_RANDOM_LINK_LENGTH):
     characters = string.ascii_letters + string.digits
     while True:
         random_link = ''.join(random.choice(characters) for _ in range(length))
